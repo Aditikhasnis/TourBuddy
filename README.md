@@ -24,3 +24,5 @@ Select these from the toolbar
 -Payment 
 
 https://www.awesomescreenshot.com/video/28535511?key=f0cef761d7a9e8ae7ec6037714ccc50d
+
+https://github.com/Aditikhasnis/TourBuddy/assets/110238534/96f9fe89-7172-4315-bd9c-2abcf557b76f
