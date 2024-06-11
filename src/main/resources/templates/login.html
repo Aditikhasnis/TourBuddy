@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 10px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #f9f9f9;
+            transition: background 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background: #fff;
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Add a smooth transition for input focus and button hover */
+        input,
+        button {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="#" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" onclick="location.href='/combined'">Login</button>
+        </form>
+        <!-- Display any login error message here if needed -->
+        <div class="error-message" th:if="${error}">
+            <p th:text="${error}"></p>
+        </div>
+    </div>
+</body>
+</html>

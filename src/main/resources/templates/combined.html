@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 20px;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 8px 16px;
+            border-radius: 5px;
+            background: #fff;
+            transition: all 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul li a:hover {
+            background-color: #007bff;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .picture {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .picture img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .picture img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .emoji {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .emoji:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img class="emoji" src="https://via.placeholder.com/30" alt="Emoji" />
+    <h2>Welcome to Tour Buddy!</h2>
+
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a th:href="@{/book-package}">Book Package</a></li>
+            <li><a th:href="@{/book-hotel}">Book Hotel</a></li>
+            <li><a th:href="@{/payment}">Payment</a></li>
+            <li><a href="javascript:void(0)" onclick="promptForAdminKey()">Admin</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function promptForAdminKey() {
+            var secretKey = prompt("Enter the secret key:");
+            if (secretKey === "1234") {
+                window.location.href = "/admin";
+            } else {
+                alert("Invalid secret key. Access denied.");
+            }
+        }
+    </script>
+
+    <!-- Picture -->
+    <div class="picture">
+        <img src="https://theplanetd.com/images/Cities-in-Italy-Amalfi-Coast-Towns.jpg" alt="Beautiful scenery" />
+    </div>
+</div>
+</body>
+</html>

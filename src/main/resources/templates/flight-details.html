@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .flight {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .flight:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Flight Details to <span th:text="${destination}"></span></h2>
+        <div>
+            <div th:each="flight : ${flights}" class="flight">
+                <p><strong>Airline:</strong> <span th:text="${flight.airline}"></span></p>
+                <p><strong>Flight Number:</strong> <span th:text="${flight.flightNumber}"></span></p>
+                <p><strong>Departure:</strong> <span th:text="${flight.departure}"></span></p>
+                <p><strong>Arrival:</strong> <span th:text="${flight.arrival}"></span></p>
+                <p><strong>Duration:</strong> <span th:text="${flight.duration}"></span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

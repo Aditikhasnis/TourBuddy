@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        width: 400px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-top: 0;
+      }
+
+      .payment-buttons {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .payment-button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 0 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .payment-button:hover {
+        background-color: #45a049;
+      }
+
+      .payment-form {
+        display: none;
+      }
+
+      .payment-form.active {
+        display: block;
+      }
+
+      .payment-form input[type="text"],
+      .payment-form input[type="password"],
+      .payment-form button {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        background-color: #f8f8f8;
+        transition: border-color 0.3s;
+        font-size: 16px;
+      }
+
+      .payment-form input[type="text"]:focus,
+      .payment-form input[type="password"]:focus,
+      .payment-form button:focus {
+        outline: none;
+        border-color: #4caf50;
+      }
+
+      .payment-form button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .payment-form button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Payment</h2>
+      <div class="payment-buttons">
+        <button class="payment-button" onclick="showCreditCardForm()">
+          Credit Card
+        </button>
+        <button class="payment-button" onclick="showDebitCardForm()">
+          Debit Card
+        </button>
+        <button class="payment-button" onclick="showUpiForm()">UPI</button>
+      </div>
+
+      <div id="creditCardForm" class="payment-form">
+        <!-- Credit Card Payment Form -->
+        <form id="creditCardPaymentForm" action="/processPayment" method="post">
+          <!-- Include fields like card number, expiry date, CVV, etc. -->
+          <!-- Example: -->
+          <input type="text" name="cardNumber" placeholder="Card Number" />
+          <input type="text" name="expiryDate" placeholder="Expiry Date" />
+          <input type="password" name="cvv" placeholder="CVV" />
+          <button type="button" onclick="submitForm('creditCardPaymentForm')">
+            OK
+          </button>
+        </form>
+      </div>
+
+      <div id="debitCardForm" class="payment-form">
+        <!-- Debit Card Payment Form -->
+        <form id="debitCardPaymentForm" action="/processPayment" method="post">
+          <!-- Include fields like card number, expiry date, CVV, etc. -->
+          <!-- Example: -->
+          <input type="text" name="cardNumber" placeholder="Card Number" />
+          <input type="text" name="expiryDate" placeholder="Expiry Date" />
+          <input type="password" name="cvv" placeholder="CVV" />
+          <button type="button" onclick="submitForm('debitCardPaymentForm')">
+            OK
+          </button>
+        </form>
+      </div>
+
+      <div id="upiForm" class="payment-form">
+        <!-- UPI Payment Form -->
+        <form id="upiPaymentForm" action="/processPayment" method="post">
+          <!-- Include fields like UPI ID, etc. -->
+          <!-- Example: -->
+          <input type="text" name="upiId" placeholder="UPI ID" />
+          <button type="button" onclick="submitForm('upiPaymentForm')">
+            OK
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript functions for showing/hiding payment forms
+      function showCreditCardForm() {
+        document.getElementById("creditCardForm").classList.add("active");
+        document.getElementById("debitCardForm").classList.remove("active");
+        document.getElementById("upiForm").classList.remove("active");
+      }
+
+      function showDebitCardForm() {
+        document.getElementById("creditCardForm").classList.remove("active");
+        document.getElementById("debitCardForm").classList.add("active");
+        document.getElementById("upiForm").classList.remove("active");
+      }
+
+      function showUpiForm() {
+        document.getElementById("creditCardForm").classList.remove("active");
+        document.getElementById("debitCardForm").classList.remove("active");
+        document.getElementById("upiForm").classList.add("active");
+      }
+
+      function submitForm(formId) {
+        var form = document.getElementById(formId);
+        form.submit(); // Submit the form
+
+        // Show a pop-up message for successful payment
+        alert("Payment successful! Thank you for choosing Travel-Ease :)");
+      }
+    </script>
+  </body>
+</html>

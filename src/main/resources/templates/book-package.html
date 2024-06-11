@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Package</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #423f48;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #7b71e6, #9b59b6);
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+           
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #007bff;
+            text-align: center;
+            margin-top: 130px; 
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 36px;
+            text-align: center;
+            background: #007bff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 32px;
+            text-align: center;
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+            text-align: left;
+        }
+
+        select,
+        input[type="text"],
+        input[type="number"],
+        button {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 18px;
+            background-color: #f9f9f9;
+            transition: all 0.3s;
+        }
+
+        select:focus,
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        button:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .total-price {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .booked-package {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .booked-package:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .booked-package h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .booked-package p {
+            margin-bottom: 5px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1>BOOK PACKAGE</h1>
+            <h2>Book Package</h2>
+            <form id="bookingForm" action="/book-package" method="post" th:object="${package}">
+                <label for="package">Select a package:</label>
+                <select id="package" name="packageName" th:field="*{packageName}" onchange="displayPackageCost();" required>
+                    <option value="">Select Package</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Europe">Europe</option>
+                    <option value="America">America</option>
+                </select>
+                <p id="packageCost"></p>
+                <label for="persons">Number of People:</label>
+                <input type="number" id="persons" name="persons" th:field="*{persons}" min="1" value="1" required />
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="customerName" th:field="*{customerName}" required />
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="customerAge" th:field="*{customerAge}" min="1" required />
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" th:field="*{gender}" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <button type="submit" onclick="alert('Booking Successful')">Book Package</button>
+            </form>
+            <!-- Display booked package details here -->
+            <div th:if="${bookedPackage != null}" id="bookedPackage">
+                <h3>Package Booked:</h3>
+                <p>Package Name: <span th:text="${bookedPackage.packageName}"></span></p>
+                <p>Number of People: <span th:text="${bookedPackage.persons}"></span></p>
+                <p>Customer Name: <span th:text="${bookedPackage.customerName}"></span></p>
+                <p>Age: <span th:text="${bookedPackage.customerAge}"></span></p>
+                <p>Gender: <span th:text="${bookedPackage.gender}"></span></p>
+                <p class="total-price">Total Price: Rs <span th:text="${bookedPackage.price}"></span></p>
+            </div>
+            <button type="button" onclick="location.href='/book-hotel';">Book Hotel</button>
+            <button type="button" onclick="showFlightDetails()">Flight Details</button>
+        </div>
+    </div>
+    
+    <script>
+        function displayPackageCost() {
+            var packageSelect = document.getElementById("package");
+            var selectedPackage = packageSelect.options[packageSelect.selectedIndex].value;
+            var packageCostElement = document.getElementById("packageCost");
+            switch (selectedPackage) {
+                case "Japan":
+                    packageCostElement.innerText = "Package Cost: Rs 80,000";
+                    break;
+                case "Europe":
+                    packageCostElement.innerText = "Package Cost: Rs 70,000";
+                    break;
+                case "America":
+                    packageCostElement.innerText = "Package Cost: Rs 60,000";
+                    break;
+                default:
+                    packageCostElement.innerText = "";
+            }
+        }
+
+        function showFlightDetails() {
+            var packageName = document.getElementById("package").value;
+            var flightDetailsPageUrl = "/flight-details?destination=" + packageName;
+            window.location.href = flightDetailsPageUrl;
+        }
+
+        // Initialize package cost display
+        document.addEventListener("DOMContentLoaded", function() {
+            displayPackageCost();
+        });
+    </script>
+</body>
+</html>

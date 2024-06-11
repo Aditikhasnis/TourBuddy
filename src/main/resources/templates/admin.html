@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <style>
+   body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #df1875, #9b59b6);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+   }
+
+   .container {
+      padding: 30px;
+      background-color: #333;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+   }
+
+   /* Heading styling */
+   h2 {
+      font-size: 28px;
+      color: white;
+      margin-bottom: 30px;
+   }
+
+   /* Admin options list styling */
+   #adminOptions {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+   }
+
+   /* List item styling */
+   #adminOptions li {
+      margin: 15px 0;
+   }
+
+   /* Link styling */
+   #adminOptions .button {
+      display: block;
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+   }
+
+   /* Link hover effect */
+   #adminOptions .button:hover {
+      background-color: #0056b3;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 86, 179, 0.2);
+   }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2 style="color: white;">Welcome Admin!</h2>
+ 
+  <ul id="adminOptions">
+    <li><a th:href="@{/admin-hotels}" class="button">View Hotel bookings</a></li>
+    <li><a th:href="@{/admin-customers}" class="button">View Customers</a></li>
+    <li><a th:href="@{/admin-packages}" class="button">View Packages bookings</a></li>
+  </ul>
+</div>
+
+</body>
+</html>

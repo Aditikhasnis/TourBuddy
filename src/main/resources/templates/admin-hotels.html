@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Hotels</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Hotels List</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Hotel Name</th>
+      <th>Persons</th>
+      <th>Days</th>
+      <th>AC</th>
+      <th>Food Included</th>
+      <th>Total Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="hotel : ${hotels}">
+      <td th:text="${hotel.hotelName}"></td>
+      <td th:text="${hotel.persons}"></td>
+      <td th:text="${hotel.days}"></td>
+      <td th:text="${hotel.ac ? 'Yes' : 'No'}"></td>
+      <td th:text="${hotel.foodIncluded ? 'Yes' : 'No'}"></td>
+      <td th:text="${hotel.totalPrice}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
