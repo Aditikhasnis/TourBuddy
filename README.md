@@ -1,13 +1,7 @@
 # TourBuddy
 Hi Welcome 👋👋👋😀!
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
+![image](https://github.com/Aditikhasnis/TourBuddy/assets/110238534/71ebedac-ed35-4ea8-9ba1-267c7f0d4540)
 
- :: Spring Boot ::       (v3.3.0-SNAPSHOT)
 TourBuddy is a Java Spring boot Travel Management  application, an MVC architecture  with JDBC connectivity to Mysql!
 
 #Get Started in VS code
