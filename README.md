@@ -20,7 +20,7 @@ This is java Spring Boot Tours and travel management Project with follows model,
 
 ## Demo
 
-Insert gif or link to demo
+
 
 https://github.com/Aditikhasnis/TourBuddy/assets/110238534/96f9fe89-7172-4315-bd9c-2abcf557b76f
 ## 🛠 Skills
